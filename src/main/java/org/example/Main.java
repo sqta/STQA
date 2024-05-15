@@ -1,9 +1,14 @@
 package org.example;
 
+import java.util.List;
+import java.util.concurrent.TimeUnit;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class Main {
 
@@ -30,15 +35,17 @@ public class Main {
         jobTitleInput.sendKeys(jobTitle);
         locationInput.clear();
         locationInput.sendKeys(location);
-        driver.findElement(By.className("base-search-bar__submit-btn")).click();
-//        driver.findElement(By.xpath()).click();
+        //driver.findElement(By.className("base-search-bar__submit-btn")).click();
+        driver.findElement(By.xpath("//input[contains(@value,'jobs-search-bar_search-submit')]/following-sibling::button")).click();
 
         // Add assertion for validation
     }
 
     public static void selectAnyJob() {
-        WebElement jobListing = driver.findElement(By.className("job-card-container__link"));
-        jobListing.click();
+    	List<WebElement> allJobs = driver.findElements(By.xpath("//ul[@class='jobs-search__results-list']/li"));
+    	
+    	//WebElement jobListing = driver.findElement(By.className("job-card-container__link"));
+        //jobListing.click();
         // Add assertion for validation
     }
 
@@ -54,7 +61,7 @@ public class Main {
     }
     public static void main(String[] args) {
 
-        System.setProperty("webdriver.chrome.driver","D:\\Desktop\\selenium\\chromedriver-win64\\chromedriver-win64\\chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver","C:\\Users\\Jatin\\Desktop\\chromedriver.exe");
 //        WebDriver driver = new ChromeDriver();
 //        driver.manage().window().maximize();
 //        driver.get("http://www.facebook.com");
