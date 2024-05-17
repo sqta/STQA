@@ -15,6 +15,7 @@ public class Main {
     static WebDriver driver;
     public static void openLinkedIn() {
         driver.get("https://www.linkedin.com/");
+        driver.manage().window().maximize();
         // Add assertion for validation
     }
 
@@ -43,7 +44,7 @@ public class Main {
 
     public static void selectAnyJob() {
     	List<WebElement> allJobs = driver.findElements(By.xpath("//ul[@class='jobs-search__results-list']/li"));
-    	
+    	System.out.println(allJobs.size());
     	//WebElement jobListing = driver.findElement(By.className("job-card-container__link"));
         //jobListing.click();
         // Add assertion for validation
