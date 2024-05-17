@@ -38,14 +38,24 @@ public class Test {
         List<WebElement> allJobs = driver.findElements(By.xpath("//ul[@class='jobs-search__results-list']/li/div/a"));
     	allJobs.get(0).click();
     	
-    	 try {
-             Thread.sleep(7000); // Add a brief pause to ensure search results are loaded
-         } catch (InterruptedException e) {
-             e.printStackTrace();
-         }
+//    	
     	 
     	 allJobs.get(2).click();
     	 WebElement companyName = driver.findElement(By.xpath("//a[contains(@data-tracking-control-name,'public_jobs_topcard-org')]"));
     	 System.out.println(companyName.getText());
+    	 
+    	 try {
+           Thread.sleep(7000); // Add a brief pause to ensure search results are loaded
+       } catch (InterruptedException e) {
+           e.printStackTrace();
+       }
+    	 
+    	 WebElement showMore = driver.findElement(By.xpath("//button[contains(@data-tracking-control-name,'public_jobs_show-more-html-btn')]"));
+         showMore.click();
+         
+         WebElement jobDescription = driver.findElement(By.xpath("/html/body/div[1]/div/section/div[2]/div/section[1]/div/div/section/div"));
+         System.out.println("Job Description :" + jobDescription.getText());
+         
+         driver.quit();
 	}
 }
